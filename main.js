@@ -1,6 +1,9 @@
 
 
-
+function preload(){
+  ball_touch = loadSound("ball_touch_paddel.wav");
+  missed = loadSound("missed.wav");
+}
 var paddle2 =10,paddle1=10;
 
 var paddle1X = 10,paddle1Height = 110;
@@ -166,11 +169,11 @@ function move(){
   if (ball.x-2.5*ball.r/2< 0){
   if (ball.y >= paddle1Y&& ball.y <= paddle1Y + paddle1Height) {
     ball.dx = -ball.dx+0.5; 
-    
+    ball_touch.play()   
   }
   else{
     pcscore++;
-    
+    missed.play()
     reset();
     navigator.vibrate(100);
   }
